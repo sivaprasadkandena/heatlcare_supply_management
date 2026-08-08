@@ -1,0 +1,16 @@
+<div class="shell">
+  <aside class="sidebar">
+    <a class="brand" [routerLink]="'/app/' + user()?.role + '/dashboard'" aria-label="MedSync dashboard"><span class="brand-mark"><i></i><i></i><i></i></span><span><strong>medsync</strong><small>SUPPLY NETWORK</small></span></a>
+    <div class="workspace-card"><span class="workspace-icon">{{ user()?.role === 'admin' ? '✦' : user()?.role === 'pharmacy' ? '⌁' : '✚' }}</span><span><b>{{ user()?.organization }}</b><small>{{ user()?.role === 'admin' ? 'Platform administration' : user()?.role === 'pharmacy' ? 'Supplier workspace' : 'Buyer workspace' }}</small></span></div>
+    <p class="nav-label">MENU</p>
+    <nav>
+      @for (item of navItems(); track item.path) { <a [routerLink]="item.path" routerLinkActive="active" class="nav-item"><span>{{ item.icon }}</span>{{ item.label }}</a> }
+    </nav>
+    <div class="sidebar-help"><span>?</span><div><b>Need help?</b><small>Visit the help centre</small></div><i>›</i></div>
+  </aside>
+
+  <main class="shell-main">
+    <header class="topbar"><div class="mobile-brand">medsync</div><div class="topbar-actions"><button class="top-icon" aria-label="Search">⌕</button><button class="top-icon notice" aria-label="Notifications">♧<i></i></button><div class="profile-wrap"><button class="profile" (click)="isProfileOpen.set(!isProfileOpen())"><span class="avatar">{{ user()?.name?.slice(0, 2)?.toUpperCase() }}</span><span><b>{{ user()?.name }}</b><small>{{ user()?.role }} manager</small></span><i>⌄</i></button>@if (isProfileOpen()) { <div class="profile-menu"><button>Profile settings</button><button (click)="logout()">Sign out</button></div> }</div></div></header>
+    <section class="page-container"><router-outlet /></section>
+  </main>
+</div>

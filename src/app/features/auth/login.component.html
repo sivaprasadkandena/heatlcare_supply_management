@@ -1,0 +1,15 @@
+<main class="auth-page">
+  <section class="auth-panel">
+    <div class="auth-brand"><span class="brand-mark"><i></i><i></i><i></i></span><span><strong>medsync</strong><small>HEALTHCARE SUPPLY NETWORK</small></span></div>
+    <div class="auth-copy"><p class="eyebrow">WELCOME BACK</p><h1>Sign in to your workspace</h1><p>Manage the flow of essential medicines across your healthcare supply network.</p></div>
+    <form class="auth-form" (ngSubmit)="login()">
+      <label>Username<input name="username" [(ngModel)]="username" autocomplete="username" placeholder="Enter your username" required /></label>
+      <label>Password<span class="password-input"><input name="password" [(ngModel)]="password" [type]="showPassword() ? 'text' : 'password'" autocomplete="current-password" placeholder="Enter your password" required /><button type="button" (click)="showPassword.set(!showPassword())">{{ showPassword() ? 'Hide' : 'Show' }}</button></span></label>
+      @if (error()) { <p class="form-error">{{ error() }}</p> }
+      <button class="primary-button auth-submit" type="submit">Sign in to MedSync <span>→</span></button>
+    </form>
+    <p class="register-link">New to MedSync? <a routerLink="/register">Register your organisation</a></p>
+    <div class="demo-accounts"><p>Demo accounts</p><div><button type="button" (click)="useDemo('admin', 'admin')"><b>Admin</b><span>admin / admin</span></button><button type="button" (click)="useDemo('hospital', 'hospital')"><b>Hospital</b><span>hospital / hospital</span></button><button type="button" (click)="useDemo('pharmacy', 'pharmacy')"><b>Pharmacy</b><span>pharmacy / pharmacy</span></button></div></div>
+  </section>
+  <aside class="auth-aside"><div class="auth-orbit orbit-one"></div><div class="auth-orbit orbit-two"></div><div class="aside-content"><span class="aside-icon">✚</span><p class="eyebrow">CONNECTED CARE</p><h2>Better supply decisions start with visibility.</h2><p>One secure place for hospitals, pharmacies, and administrators to manage medicine supply.</p><div class="aside-stats"><span><b>174+</b><small>Verified partners</small></span><span><b>98.7%</b><small>Order visibility</small></span></div></div></aside>
+</main>

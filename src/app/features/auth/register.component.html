@@ -1,0 +1,18 @@
+<main class="auth-page register-page">
+  <section class="auth-panel">
+    <div class="auth-brand"><span class="brand-mark"><i></i><i></i><i></i></span><span><strong>medsync</strong><small>HEALTHCARE SUPPLY NETWORK</small></span></div>
+    <div class="auth-copy"><p class="eyebrow">JOIN THE NETWORK</p><h1>Register your organisation</h1><p>Hospital and pharmacy accounts are reviewed by MedSync before they can access the supply network.</p></div>
+    @if (message()) { <div class="form-success"><b>✓</b><span>{{ message() }}</span></div> }
+    <form class="auth-form registration-form" (ngSubmit)="register()">
+      <div class="role-picker"><button type="button" [class.selected]="form.role === 'hospital'" (click)="form.role = 'hospital'"><span>✚</span><b>Hospital</b><small>Buy medicines</small></button><button type="button" [class.selected]="form.role === 'pharmacy'" (click)="form.role = 'pharmacy'"><span>⌁</span><b>Pharmacy</b><small>Supply medicines</small></button></div>
+      <label>Contact name<input name="name" [(ngModel)]="form.name" placeholder="Your full name" required /></label>
+      <label>Organisation name<input name="organization" [(ngModel)]="form.organization" placeholder="Hospital or pharmacy name" required /></label>
+      <label>Choose username<input name="username" [(ngModel)]="form.username" placeholder="e.g. citygeneral" required /></label>
+      <div class="registration-grid"><label>Password<input name="password" [(ngModel)]="form.password" type="password" placeholder="At least 4 characters" required /></label><label>Confirm password<input name="confirmPassword" [(ngModel)]="form.confirmPassword" type="password" placeholder="Repeat password" required /></label></div>
+      @if (error()) { <p class="form-error">{{ error() }}</p> }
+      <button class="primary-button auth-submit" type="submit">Submit registration <span>→</span></button>
+    </form>
+    <p class="register-link">Already have access? <a routerLink="/login">Back to sign in</a></p>
+  </section>
+  <aside class="auth-aside"><div class="auth-orbit orbit-one"></div><div class="auth-orbit orbit-two"></div><div class="aside-content"><span class="aside-icon">◈</span><p class="eyebrow">VERIFIED PARTNERS</p><h2>A safer way to source essential care.</h2><p>Every organisation is checked before entering the MedSync marketplace.</p><div class="verification-list"><span>✓ Registration review</span><span>✓ Organisation verification</span><span>✓ Controlled network access</span></div></div></aside>
+</main>
